@@ -291,16 +291,8 @@ func getMembershipEventContent(room *rooms.Room, evt *muksevt.Event) (sender str
 
 	if content.Membership != prevMembership {
 		sender, text = getMembershipChangeMessage(evt, content, prevMembership, senderDisplayname, displayname, prevDisplayname)
-	} else if displayname != prevDisplayname {
-		sender = "---"
-		color := widget.GetHashColor(evt.StateKey)
-		text = tstring.NewBlankTString().
-			AppendColor(prevDisplayname, color).
-			AppendColor(" changed their display name to ", tcell.ColorGreen).
-			AppendColor(displayname, color).
-			AppendColor(".", tcell.ColorGreen)
-	}
-	return
+	} 
+    return
 }
 
 func ParseMembershipEvent(room *rooms.Room, evt *muksevt.Event) *UIMessage {
